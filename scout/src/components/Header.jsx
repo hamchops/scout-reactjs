@@ -6,7 +6,7 @@ export default function Header () {
 
     return (
         <div id="containerhdr"> 
-        <h2>nav title</h2>
+        <h2>SCOUT</h2>
         <Nav />
         </div>
     )

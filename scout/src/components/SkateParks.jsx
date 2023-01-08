@@ -14,23 +14,30 @@ export default function SkateParks() {
         }
         getData()
     }, [])
+    if (!skateparks){
+        return <h2>loading</h2>
+    } else {
 
     return (
         <div>
 
-            <p> Name: {skateparks ? <p>{skateparks.map(skateparks => <div>{skateparks.name}</div>)}</p>: <p>Loading...</p>}</p>
+            <div className="parkcards" >
+                {skateparks.map((skateparks) =>(
+                <div className="box"  key={skateparks.name}>
+                    <h3 className="parkname"> {skateparks.name}</h3>
+                    <h4 className="parkaddress">{skateparks.address}</h4>
+                </div>))}
+        </div>
 
-            <div>
-                
-                    { skateparks.map((skateparks) =>(
-                        <div className="box"  key={skateparks.name}>
-                        <h3 className="parksline1"> {skateparks.name}</h3>
-                        <h4 className="parksline2">{skateparks.address}</h4>
-                        </div> 
-                        ))}
 
-                </div>
-            </div>
 
+
+
+
+
+
+
+        </div>
         )
     }
+}

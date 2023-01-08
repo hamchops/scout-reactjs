@@ -1,65 +1,43 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, ActivityIndicator, Button } from 'react-native'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-// import {StatusBar} from 'expo-status-bar'
-// import { StyleSheet } from 'react-native'
+import { Link } from 'react-router-dom'
 
 
 
 export default function Home(props) {
-    // const [place, setPlaces] = useState('')
-
-    // useEffect(() => {
-    //     const getDataFromPlaces = async () => {
-    //         const response = await axios.get('http://localhost:3001/api/places')
-    //             setPlaces(response.data)
-    //             .catch(err => console.log("oh no!!"))
-    //     }
-    //     getDataFromPlaces()
-    // })
-
-    
-
-        // if (error) {
-        //     return <Text>(error)</Text>
-        // }
-
-    // const fetchApi = async () => {
-    //     try {
-    //         const res = await axios.get('http://localhost:3001/api/places')
-    //         console.log(res.data)
-
-    //     } catch (error) {
-    //         console.log(error.message)
-    //     }
-    // }
-
-
-// useEffect (() => {
-//     fetchApi()
-// }, [])
-
-const [data, setData] = useState(null)
-
-const fetchData = async () => {
-    try {
-        const response = await axios.get('http://localhost:3001/api/places');
-        setData(response.data)
-    } catch (error) {
-        console.error(error)
-    }
-}
+    const [places, setPlaces] = useState(null)
+    useEffect(() => {
+        const getDataFromPlaces = async () => {
+            const response = await axios.get('http://localhost:3001/api/places')
+                setPlaces(response.data)
+        }
+        getDataFromPlaces()
+    }, [])
+    if (!places){
+        return <h2>loading</h2>
+    } else {
 
     return (
         <div>
-        <h3 style={{flex:1, alignItems: 'center', justifyContent: 'center', backgroundColor: "aqua"}}>
-            <Text style={{ fontsize: 24, fontWeight: 'bold', }}>Welcome to Scout. Lets find your next adventure!</Text>
-            </h3>
-            </div>
-    )}
+                
+                <h3 className="greeting" style={{flex:1, alignItems: 'center', justifyContent: 'center', backgroundColor: "aqua"}}>Welcome to Scout. Lets find your next adventure!</h3>
         
+        <div className="categories" >
+        <Link className="dogbtn" to='/dogparks' style={{textDecoration: 'none', color: 'orange', fontSize: '28px', margin: '50px'}}>
+                    DOG PARKS
+        </Link>
+        
+        <Link className="snowbtn" to='/snowparks' style={{textDecoration: 'none', color: 'blue', fontSize: '28px', margin: '50px'}}>
+                    SNOW PARKS
+        </Link>
 
+        <Link className="skatebtn" to='/skateparks' style={{textDecoration: 'none', color: 'red', fontSize: '28px'}}>
+                    SKATE PARKS
+        </Link>
 
-
-
+        </div>
+        </div>
+    )
+}
+}

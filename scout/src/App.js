@@ -6,8 +6,7 @@ import Main from './components/Main';
 function App() {
   return (
   <div>
-
-    <h3>asd;lfkahsjdfalkj</h3>
+    
     {/* <div>
       <Nav>
       <Header />
